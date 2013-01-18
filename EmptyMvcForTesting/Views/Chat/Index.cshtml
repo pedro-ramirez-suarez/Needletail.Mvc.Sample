@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Chat";
+}
+
+<div  ng-app>
+    <div id="chatController" ng-controller="MessageCtrl">
+    <h2>Conversations</h2>      
+    <div id="chatHistory">
+      <ul class="unstyled">
+        <li ng-repeat="msg in messages">
+          <span class="userLabel">{{msg.from}} : </span>
+          <span class="message">{{msg.message}}</span>
+          <span class="msgOn">on: {{msg.date}}</span>
+        </li>
+      </ul>
+      </div>
+      <div id="useList">
+        <h3>User List</h3>
+        
+        <select ng-model="selectedUser" multiple=multiple >
+            <option ng-repeat="usr in users" value="{{usr.ClientId }}" >
+                {{usr.ClientId }}
+            </option>
+        </select>
+      </div>
+      <p>&nbsp;</p>
+      <form ng-submit="addMessage()">
+        <input type="text" ng-model="messagesText"  size="30"
+               placeholder="send message">
+        <input class="btn-primary" type="submit" value="Send">
+        <input type="checkbox"  ng-model="sendToAll" /> Send to all
+      </form>
+      
+
+</div>
+
+
+<script language="javascript" type="text/javascript">
+    var twoway = '@Url.Action("Remote", "Api", new { })';
+    chatUrl = '@Url.Action("Index", "Chat", new { })';
+    needleTail.initialize(twoway);
+    getUsers();
+</script>

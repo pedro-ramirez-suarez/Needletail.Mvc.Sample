@@ -16,19 +16,19 @@ public TwoWayResult SendMessageTo(string messageTo, string message)
 </pre>
 <p>The "messageReceived" function is defined in the Chat.js file, you can call js funcions defined anywhere in your javascript, you can also make calls to functions
 contained in a namespace like this:</p>
+<pre>
 <code>
-
 	dynamic call = new ClientCall { ClientId = messageTo, CallerId = User.Identity.Name };
 	//make the remote call
 	call.sample.of.namespace.call(parameter1, parameter2, etc);
 	return new TwoWayResult(call);
-
 </code>
 </pre>
 
 <p>You can call javascript code anywhere in your server's code, i.e. you don't need to call as an ActionResult inside a controller</p>
 <p>Take a look to To the RemoteController, there is a method in there that is called from the UserHelper class when a user logs in or logs out</p>
 <strong>The code that makes client calls does not need to be in the RemoteController</strong>
+
 <pre>
 <code>
 public static void ReloadUserList()

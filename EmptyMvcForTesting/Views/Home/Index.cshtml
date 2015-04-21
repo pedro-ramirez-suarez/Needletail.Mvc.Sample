@@ -4,13 +4,15 @@
 
 <hgroup class="title">
     <h1>@ViewBag.TitlePage.</h1>
-    <h2>@ViewBag.Message</h2>
 </hgroup>
 
 <article>
-    <p>
-    Login to use the chat 
-    </p>
+    <h3>To Start the chat enter your user name</h3>
+    <form method="post">
+        <input type="text" id="userName" name="userName"  placeholder="Enter your user name here" tabindex="0" autofocus required />
+        <br />
+        <button type="submit" class="btn btn-success">Go Chat!</button>
+    </form>
 
     
 </article>

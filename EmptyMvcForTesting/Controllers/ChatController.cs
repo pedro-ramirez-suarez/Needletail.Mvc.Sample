@@ -12,9 +12,16 @@ using EmptyMvcForTesting.Utils;
 namespace EmptyMvcForTesting.Controllers
 {
 
-    [Authorize]
     public class ChatController : Controller
     {
+
+        public string CurrentUser
+        {
+            get 
+            {
+                return Request.Cookies["chatUser"].Value;
+            }
+        }
         //
         // GET: /Chat/
 
@@ -26,14 +33,10 @@ namespace EmptyMvcForTesting.Controllers
 
         public JsonResult GetUsers()
         {
-            var m = new EFModel.Entities();
-
-            var usrs = m.UserProfiles.ToList();
             var online = new List<object>();
-
-            foreach (var u in usrs) 
-                if(u.UserName != User.Identity.Name && UserHelper.IsUserLogedIn(u.UserName))
-                    online.Add(new { ClientId = u.UserName });
+            foreach (var u in RemoteController.CurrentUsers) 
+                if(u != CurrentUser)
+                    online.Add(new { ClientId = u  });
 
             return Json(online);
         }
@@ -41,7 +44,7 @@ namespace EmptyMvcForTesting.Controllers
         
         public TwoWayResult SendMessageTo(string messageTo, string message)
         {
-            dynamic call = new ClientCall { ClientId = messageTo, CallerId = User.Identity.Name };
+            dynamic call = new ClientCall { ClientId = messageTo, CallerId = CurrentUser };
             //make the remote call
             call.messageReceived(User.Identity.Name, message , true);
             return new TwoWayResult(call);

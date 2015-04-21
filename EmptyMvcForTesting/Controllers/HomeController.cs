@@ -13,9 +13,17 @@ namespace EmptyMvcForTesting.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.Message = "Register and login to see the chat app.";
             ViewBag.TitlePage = "Chat app with SSE";
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Index(string userName)
+        {
+            //add the cookie
+            Response.Cookies.Add(new HttpCookie("chatUser", userName));
+            //redirect to the chat page
+            return RedirectToAction("Index", "Chat", new { });
         }
 
         public ActionResult About()

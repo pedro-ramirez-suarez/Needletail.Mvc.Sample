@@ -1,5 +1,5 @@
-<h1>Sample application for Needletail.Mvc</h1>
-<p>Just download and compile, you may need to download/reinstall the Needletail.Mvc package</p>
+<h1>Small Chat application for Needletail.Mvc</h1>
+<p>Update the Needletail.MVC package before run the project.</p>
 <p>The sample uses angular.js</p>
 <h3>Points of interest.</h3>
 <p>Look how the SendMessageTo method on ChatController makes javasript call</p>

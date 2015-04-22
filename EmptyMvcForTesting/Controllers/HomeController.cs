@@ -22,6 +22,7 @@ namespace EmptyMvcForTesting.Controllers
         {
             //add the cookie
             Response.Cookies.Add(new HttpCookie("chatUser", userName));
+            RemoteController.ReloadUserList();
             //redirect to the chat page
             return RedirectToAction("Index", "Chat", new { });
         }

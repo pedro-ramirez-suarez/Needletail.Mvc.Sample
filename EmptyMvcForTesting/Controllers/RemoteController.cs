@@ -37,7 +37,10 @@ namespace EmptyMvcForTesting.Controllers
         {
             string user = HttpContext.Current.Request.Cookies["chatUser"].Value;
             if (!CurrentUsers.Contains(user))
+            {
                 CurrentUsers.Add(user);
+                ReloadUserList();
+            }
             return user;
         }
 

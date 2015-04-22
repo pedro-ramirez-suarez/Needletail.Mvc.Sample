@@ -35,9 +35,11 @@
 </div>
 
 
-<script language="javascript" type="text/javascript">
+<script language="javascript" type="text/javascript" defer>
+
     var twoway = '@Url.Action("Remote", "Api", new { })';
     chatUrl = '@Url.Action("Index", "Chat", new { })';
     needleTail.initialize(twoway);
     getUsers();
+    
 </script>

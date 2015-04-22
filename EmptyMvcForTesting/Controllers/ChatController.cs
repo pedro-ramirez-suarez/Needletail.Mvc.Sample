@@ -46,7 +46,7 @@ namespace EmptyMvcForTesting.Controllers
         {
             dynamic call = new ClientCall { ClientId = messageTo, CallerId = CurrentUser };
             //make the remote call
-            call.messageReceived(User.Identity.Name, message , true);
+            call.messageReceived(CurrentUser, message , true);
             return new TwoWayResult(call);
         }
 

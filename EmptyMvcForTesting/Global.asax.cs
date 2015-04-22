@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Needletail.Mvc;
+using EmptyMvcForTesting.Controllers;
 
 namespace EmptyMvcForTesting
 {
@@ -24,7 +25,7 @@ namespace EmptyMvcForTesting
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
-            
+            RemoteController.CurrentUsers.Clear();           
         }
     }
 }
